@@ -1,0 +1,256 @@
+<div class="" id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row row-stat">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+
+          <div class="panel-heading panel-heading-divider">
+            Calculadora de Imposto de Renda
+            <span class="panel-subtitle">Você pode optar por importar suas notas de corretagem no formato PDF ou
+            realizar o cálculo individual de cada ativo.</span>
+          </div>
+          <div class="panel-body">
+
+
+
+
+
+            <div>
+              <tabset>
+                <tab>
+                  <ng-template tabHeading><i class="fa fa-arrow-up"></i> Importar Operações</ng-template>
+
+                  <h6 class="xs-mt-40 xs-mb-10"><strong>Calculadora de Imposto Automática</strong></h6>
+
+                  <p>Nesta opção você envia suas notas de corretagem no fortamdo PDF. Estes documentos devem esta no padrão
+                    <a href="http://www.b3.com.br/pt_br/solucoes/plataformas/middle-e-backoffice/sinacor/sobre/"
+                                                                        target="_blank">SINACOR</a>. No momento esta
+                    funcionalidade só está disponível para FIIs.
+                  </p>
+                  <div class="xs-mt-10 xs-mb-10  ">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <form class="form-horizontal">
+                          <div class="form-group">
+                            <div class="row">
+                              <label class="col-sm-3 control-label" for="form-control-21">Tipo do ativo</label>
+                              <div class="col-sm-9">
+                                <select id="form-control-21" class="custom-select">
+                                  <option value="ff">Fundo Imobiliário (FII)</option>
+                                  <option value="stock_day">Ação (Não implementado)</option>
+                                  <option value="stock_swing">Derivativos (Não implementado)</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="form-group">
+                            <div class="row">
+                              <label class="col-sm-3 control-label" for="form-control-corretora">Corretora</label>
+                              <div class="col-sm-9">
+                                <select id="form-control-corretora" class="custom-select" (change)="selectCorretora($event)">
+                                  <option value="XP">XP</option>
+                                  <option value="Outra">Outra</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="form-group">
+                            <div class="row">
+                              <label class="col-sm-3 control-label" for="form-control-23">Notas de Corretagem (PDF)</label>
+                              <div class="col-sm-9">
+                                <div class="input-group">
+                                  <input id="form-control-23" class="form-control" type="text" placeholder="{{selecioneOsArquivos}}"
+                                  >
+                                  <span class="input-group-btn">
+                                         <label class="btn btn-primary file-upload-btn">
+                                         <input class="file-upload-input" type="file" #fileV name="files[]" multiple
+                                                (change)="onUploadVenda(fileV.files)" accept=".pdf, .PDF" style="cursor: pointer">
+                                         <i class="icon mdi mdi-upload"></i>
+                                         </label>
+                                         </span>
+                                </div>
+                                <p class="help-block">
+                                  <small>Clique no botão para fazer o upload de até 12 PDFs de até 1 MB</small>
+                                </p>
+
+                                <label class="custom-control custom-control-primary custom-checkbox active" [hidden]="!hideSub">
+                                  <input id="allProductsCheck" class="custom-control-input" type="checkbox" name="custom"
+                                         (change)="onCheckBox($event)">
+                                  <span class="custom-control-indicator"></span>
+                                  <span class="custom-control-label">Incluir Subscrições</span>
+                                </label>
+                                <p class="help-block" [hidden]="!hideSub">
+                                  <small>Você precisa importar suas subscrições antes de clicar em calcular</small>
+                                </p>
+
+                                <div>
+                                  <button class="btn2 btn-space btn-primary"
+                                          (click)="sendFiles()" type="button"><i class="icon icon-left mdi mdi-calculator"></i> Calcular</button>
+                                </div>
+                                <br>
+                                <alert type="success" role="alert" [hidden]="!alert_sucess_upload" *ngFor="let app of dataOutUpload">
+                                  <div>
+                                    <h2 style="font-weight: bold"><span>{{app.name}}</span></h2>
+                                  </div>
+                                  <div>
+                                    <h4><span>Valor do DARF: R${{app.fixedTax.toLocaleString('pt-BR')}}</span></h4>
+                                  </div>
+                                  <div>
+                                    <span>Lucro Liquido (%): {{app.totalProfitPercentage * 100}}%</span>
+                                  </div>
+                                  <div>
+                                    <span>Lucro Líquido Total: R$ {{app.totalProfitValue}}</span>
+                                  </div>
+                                  <div>
+                                    <span>Emolumentos: R$ {{app.emolumentosFee}}</span>
+                                  </div>
+                                  <div>
+                                    <span>Liquidação: R$ {{app.liquidacaoFee}}</span>
+                                  </div>
+                                  <div>
+                                    <span>IRRF: R$ {{app.irrffee}}</span>
+                                  </div>
+                                  <div>
+                                    <span>Corretora: R$ {{app.corretoraFee}}</span>
+                                  </div>
+                                  <div>
+                                    <h5><span>Data: {{app.date | date: 'dd/MM/yyyy'}}</span></h5>
+                                  </div>
+                                </alert>
+                                <alert type="danger" role="alert" [hidden]="!alert_fail_upload" >
+                                  <div>
+                                    <h6><span>{{message_error_automatic}}</span></h6>
+                                  </div>
+                                </alert>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </tab>
+
+
+
+
+
+
+
+
+                <tab>
+                  <ng-template tabHeading><i class="fa fa-pencil-square-o"></i> Operação Manual</ng-template>
+
+                  <h6 class="xs-mt-40 xs-mb-10"><strong>Calculadora de Imposto Manual</strong></h6>
+                  <p>Nesta opção você entra com os dados do ativo manualmente no formulário abaixo e nós
+                    calculamos o imposto da operação. No momento esta
+                    funcionalidade só está disponível para FIIs.</p>
+
+                  <div class="row">
+                    <div class="col-md-8">
+                      <form class="form-horizontal">
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-sm-3 control-label" for="form-control-23K">Tipo do ativo</label>
+                            <div class="col-sm-9">
+                              <select id="form-control-23K" class="custom-select">
+                                <option value="fii">Fundo Imobiliário (FII)</option>
+                                <option value="stock_day">Ação Day Trade (Não implementado)</option>
+                                <option value="stock_swing">Ação Swing Trade (Não implementado)</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-sm-3 control-label" for="name2">Nome do Ativo</label>
+                            <div class="col-sm-9">
+                              <input id="name2" name="name2" class="form-control" type="text" style="text-transform:uppercase"
+                                     (keyup)="onNameKeyUp($event)" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-sm-3 control-label" for="start">Data da Venda</label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="date" id="start" name="trip-start"
+                                     value="01-01-2018"
+                                     min="01-01-2019" max="01-01-2022"
+                                     (change)="onDateKeyUp($event)" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-sm-3 control-label" for="totalValueBought">Valor Total da Compra</label>
+                            <div class="col-sm-9">
+                              <input step="0.01" id="totalValueBought" name="totalValueBought" class="form-control" type="number"
+                                     (keyup)="onBuyKeyUp($event)">
+                              <p class="help-block" required>
+                                <small>Esse é o valor sem as taxas da B3 e da corretora da compra</small>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-sm-3 control-label" for="totalValueSold">Valor Total da Venda</label>
+                            <div class="col-sm-9">
+                              <input step="0.01" id="totalValueSold" name="totalValueSold"  class="form-control" type="number"
+                                     (keyup)="onSellKeyUp($event)">
+                              <p class="help-block" required>
+                                <small>Esse é o valor sem as taxas da B3 e da corretora da venda</small>
+                              </p>
+                              <div>
+                                <button class="btn2 btn-space btn-primary" type="button" (click)="postProfile()"><i class="icon icon-left mdi mdi-calculator"></i> Calcular</button>
+                              </div>
+                              <br>
+                              <alert type="success" role="alert" [hidden]="!alert_sucess_manual" >
+                                <div>
+                                  <h3><span>{{fixedTaxString}}</span></h3>
+                                </div>
+                                <div>
+                                  <span>{{totalProfitPercentageString}}</span>
+                                </div>
+                                <div>
+                                  <span>{{totalProfitValueString}}</span>
+                                </div>
+                                <div>
+                                  <span>{{emolumentosFeeString}}</span>
+                                </div>
+                                <div>
+                                  <span>{{liquidacaoFeeString}}</span>
+                                </div>
+                                <div>
+                                  <span>{{irrffeeString}}</span>
+                                </div>
+                                <div>
+                                  <span>{{corretoraFeeString}}</span>
+                                </div>
+                              </alert>
+                              <alert type="danger" role="alert" [hidden]="!alert_fail_manual" >
+                                <div>
+                                  <h6><span>{{message_error_manual}}</span></h6>
+                                </div>
+                              </alert>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                </tab>
+              </tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

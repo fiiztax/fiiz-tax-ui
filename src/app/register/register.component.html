@@ -1,0 +1,110 @@
+﻿<style>
+    .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+    }
+</style>
+<div id="login-window" class="jumbotron jumbotron2 jaime2" style="padding-top: 20px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <div style="display: block; margin-left: auto; margin-right: auto; width: 30%">
+                    <a href="https://fiiztax.com" style="cursor: pointer">
+                        <img src="../../assets/images/icon_transparent_medium_2.png"/>
+                    </a>
+                </div>
+                <h2 align="center">Cadastro</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <table>
+                        <tr>
+                            <td style="width: 1000px">
+                                <div class="form-group">
+                                    <label style="font-size: large" for="firstName">Nome</label>
+                                    <input style="font-size: large" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">O nome é obrigatório</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width: 50%">
+                                <div class="form-group">
+                                    <label style="font-size: large" for="lastName">Sobrenome</label>
+                                    <input style="font-size: large" type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">O sobrenome é obrigatório</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <label style="font-size: large" for="username">Usuário</label>
+                        <input style="font-size: large" type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">O usuário é obrigatório</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: large" for="email">Email</label>
+                        <input style="font-size: large" type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">O email é obrigatório</div>
+                            <div *ngIf="f.email.errors.email">O email é inválido</div>
+                        </div>
+                    </div>
+                    <table>
+                        <tr>
+                            <td style="width: 1000px">
+                                <div class="form-group">
+                                    <label style="font-size: large" for="password">Senha</label>
+                                    <input style="font-size: large" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">A senha é obrigatória</div>
+                                        <div *ngIf="f.password.errors.minlength">A senha deve conter no mínimo 6 caracteres</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width: 50%">
+                                <div class="form-group">
+                                    <label style="font-size: large" for="jaime">Confirmação</label>
+                                    <input style="font-size: large" type="password" formControlName="jaime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.jaime.errors }" />
+                                    <div *ngIf="submitted && f.jaime.errors" class="invalid-feedback">
+                                        <div *ngIf="f.jaime.errors.required">Confirmação obrigatória</div>
+                                        <div *ngIf="f.password.errors.minlength">A Confirmação está errada</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form-group noselect">
+                        <label style="font-size: large" for="answer">Quanto é {{firstDigit}} + {{secondDigit}}?</label>
+                        <input style="font-size: large" type="text" formControlName="answer" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.answer.errors }" />
+                        <div *ngIf="submitted && f.answer.errors" class="invalid-feedback">
+                            <div *ngIf="f.answer.errors.required">A validação é obrigatória</div>
+                            <div *ngIf="f.answer.errors.pattern">Resposta inválida</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="loading" class="btn btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Cadastrar
+                        </button>
+                        <a routerLink="/login" class="btn btn-link">Cancelar</a>
+                        <alert></alert>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="https://fiiztax.com" target="_top">Copyright © 2020 - FIIZ TAX</a>
+    </p>
+</div>

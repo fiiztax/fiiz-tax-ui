@@ -1,0 +1,16 @@
+.app-loading {
+  .logoApp {
+    width: 100px;
+    height: 100px;
+    transform-origin: center center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    // this way asset gets processed by webpack
+    background: url(assets/images/icon_transparent_small.png) bottom center no-repeat;
+  }
+}

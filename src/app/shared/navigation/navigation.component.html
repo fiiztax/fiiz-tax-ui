@@ -1,0 +1,51 @@
+<div class="sidebar hidden-sm-down">
+    <ul class="nav in" id="side-menu">
+        <li class="user-pro">
+            <a href="#" class="text-center">
+                <div class="profile-img">
+                    <img src="assets/images/icon_transparent_medium.png"/>
+                </div>
+                <span>Calculadora de Imposto</span>
+            </a>
+        </li>
+        <li>
+            <a  [routerLink]="['/forms']" [routerLinkActive]="['active']">
+                <i class="fa fa-calculator"></i>
+                <span class="hide-menu"> Calculadora</span>
+            </a>
+        </li>
+        <li>
+            <a  [routerLink]="['/extract']" [routerLinkActive]="['active']">
+                <i class="fa fa-exchange"></i>
+                <span class="hide-menu"> Importar Extrato</span>
+            </a>
+        </li>
+        <li>
+            <a  [routerLink]="['/tables']" [routerLinkActive]="['active']">
+                <i class="fa fa-list-ol"></i>
+                <span class="hide-menu"> Histórico</span>
+            </a>
+        </li>
+        <li>
+            <a  [routerLink]="['/wallet']" [routerLinkActive]="['active']">
+                <i class="fa fa-bar-chart"></i>
+                <span class="hide-menu"> Relatórios</span>
+            </a>
+        </li>
+        <li>
+            <a  [routerLink]="['/boleto']" [routerLinkActive]="['active']">
+                <i class="fa fa-file-text-o"></i>
+                <span class="hide-menu"> Boleto DARF</span>
+            </a>
+        </li>
+        <li>
+            <a  [routerLink]="['/contact']" [routerLinkActive]="['active']">
+                <i class="fa fa-envelope-o"></i>
+                <span class="hide-menu"> Contato</span>
+            </a>
+        </li>
+    </ul>
+    <div id="content-desktop">
+        <h6 align="center" style="margin-top: 20px"> Copyright &copy; 2020</h6>
+    </div>
+</div>

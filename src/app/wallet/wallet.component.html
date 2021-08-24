@@ -1,0 +1,109 @@
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {background-color: #f2f2f2;}
+  tr:hover {
+    background-color: #ff6284;
+    color: white;
+  }
+
+
+</style>
+<div class="" id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row row-stat">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+
+          <div class="panel-heading panel-heading-no-divider">Resumo das Operações<span class="panel-subtitle"></span>
+          </div>
+          <div class="panel-body">
+            <div class="panel-heading noborder">
+              <div class="panel-icon"><i class="fa fa-line-chart"></i></div>
+              <div class="media-body">
+                <h5 class="md-title nomargin">Lucro Líquido Total</h5>
+                <h1 class="mt5">R$ {{tatalLucro.toLocaleString('pt-BR')}}</h1>
+              </div><!-- media-body -->
+              <hr>
+              <div class="clearfix mt20">
+                <div class="pull-right">
+                  <h5 class="md-title nomargin">Total de Taxas de Corretora + B3</h5>
+                  <h4 class="nomargin">R$ {{tatalTaxas.toLocaleString('pt-BR')}}</h4>
+                </div>
+                <div class="pull-left">
+                  <h5 class="md-title nomargin">Total de Todos os DARFs</h5>
+                  <h4 class="nomargin">R$ {{tatalDarf.toLocaleString('pt-BR')}}</h4>
+                </div>
+              </div>
+            </div>
+            <br/>
+
+            <div class="row">
+
+              <div class="col-md-12">
+                <div class="white-box">
+                  <app-bar-chart></app-bar-chart>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="white-box">
+                  <app-line-chart></app-line-chart>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="white-box">
+                  <app-round-chart></app-round-chart>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="panel-heading-divider-wallet" align="center">
+              <span>Valor do DARF</span>
+            </div>
+
+            <div>
+                <table>
+                  <thead>
+                  <tr>
+                    <th style="text-align: center">Mês</th>
+                    <th style="text-align: center">Valor do DARF</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let app of monthLabels; let k = index">
+                    <td style="text-align: center">
+                      {{app}}
+                    </td>
+                    <td style="text-align: center" >
+                      R$ {{darfValue[k].toLocaleString('pt-BR')}}
+                    </td>
+                  </tr>
+                  </tbody>
+                  <tbody *ngIf="!monthLabels">
+                  <tr>
+                    <td style="text-align: center">-</td>
+                    <td style="text-align: center">-</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

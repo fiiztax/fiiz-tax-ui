@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIIZ TAX - Calculadora de IR de FIIs e Ações</title>
+  <meta name="robots" content="INDEX, NOFOLLOW"/>
+  <link rel="canonical" href="https://fiiztax.technology/" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FIIZ TAX - Calculadora de IR"/>
+  <meta property="og:title" content="FIIZ TAX - Sistema de Cálculo de Imposto Automático"/>
+  <meta property="og:description" content="Uma ferramenta grátis para cálculo imposto de renda de FIIs e Ações de transações realizadas na bolsa B3"/>
+  <meta property="og:url" content="https://fiiztax.technology/" />
+  <link rel="apple-touch-icon" href="https://fiiztax.com/images/logo_square_small.jpg"/>
+  <link rel="apple-touch-icon" href="https://fiiztax.com/images/logo_square_small.jpg"/>
+  <meta property="og:image" content="https://fiiztax.com/images/logo_square_small.jpg"/>
+  <meta name="description" content="Uma ferramenta para cálculo de imposto de renda e DARF para transações financeitas na Bovespa B3"/>
+  <meta name="keywords" content="FIIZTAX, FIIZ TAX, Calcular DARF de FII Online, Calcular Imposto de Fundo Imobiliario FII, Calcular Bolero FII, Calculadora de IR de FIIs da B3"/>
+  <meta name="author" content="Jaime Dantas" />
+  <link rel="icon" type="image/x-icon" href="assets/images/logo_small.jpg">
+  <link href=assets/images/logo_small.jpg rel="shortcut icon" type=image/x-icon />
+  <link href="https://fiiztax.com/images/logo_square_small.jpg" rel="shortcut icon" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css" />
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
+  <link href="assets/css/style.default.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://cdn.materialdesignicons.com/1.1.34/css/materialdesignicons.min.css" rel="stylesheet" >
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/chart.js/dist/Chart.bundle.js"></script>
+  <script src="assets/js/jquery.sidr.min.js"></script>
+  <style>
+
+    .app-loading {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .app-loading .spinner {
+      height: 250px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #ddd;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+
+
+
+
+  </style>
+
+</head>
+<body>
+  <script>window.__theme = 'bs4';</script>
+
+  <app-root>
+
+    <div class="app-loading">
+      <div class="logoApp"></div>
+      <svg class="spinner" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+
+  </app-root>
+<script src="assets/js/ga.js"></script>
+<!-- End Google Tag Manager -->
+</body>
+</html>

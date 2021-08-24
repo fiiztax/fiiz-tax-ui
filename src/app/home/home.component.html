@@ -1,0 +1,31 @@
+
+<div class="" id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row row-stat">
+      <div class="col-sm-12">
+
+        <div class="panel panel-default">
+          <div style="display: block; margin-left: 0px; margin-right: auto; width: 15%">
+            <img src="../../assets/images/em_breve.png"/>
+          </div>
+          <div class="panel-heading panel-heading-divider">Minha Conta<span class="panel-subtitle">
+                Olá <b>{{currentUser.firstName}}</b>! No momento estamos trabalhando para implementar diversas funcionalidades de gerenciamento
+          e acompanhamento de sua carteira. Nos próximos dias lançaremos uma atualização que habilitará a análise
+          em tempo real da sua carteira de ativos.</span>
+          </div>
+          <div class="panel-body">
+            <a style="font-weight: bold">Nome</a>
+            <p>{{currentUser.firstName}}</p>
+            <a style="font-weight: bold">Sobrenome</a>
+            <p>{{currentUser.lastName}}</p>
+            <a style="font-weight: bold">Email</a>
+            <p>{{currentUser.email}}</p>
+            <a style="font-weight: bold">Usuário</a>
+            <p>{{currentUser.username}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div align="center" style="display: block" *ngIf="lineChartData">
+    <canvas baseChart
+                [datasets]="lineChartData"
+                [labels]="monthLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType">
+    </canvas>
+</div>
+<div align="center" style="display: block" *ngIf="!lineChartData">
+    Aqui você visualiza seus DARFs
+</div>

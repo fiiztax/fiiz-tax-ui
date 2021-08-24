@@ -1,0 +1,146 @@
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {background-color: #f2f2f2;}
+  tr:hover {
+    background-color: #ff6284;
+    color: white;
+  }
+
+
+</style>
+
+<div class="" id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row row-stat">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading panel-heading-divider">Histórico de Operações<span class="panel-subtitle">Aqui você encontra todos os cálculos de operações já realizados.</span>
+          </div>
+            <div class="panel-body">
+                <div>
+                    <tabset>
+                        <tab>
+                            <ng-template tabHeading> Vendas de FIIs</ng-template>
+                            <h6 class="xs-mt-40 xs-mb-10"><strong></strong></h6>
+                            <div style="overflow-x:auto; font-size: small">
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th style="text-align: center">Ativo</th>
+                                      <th style="text-align: center">Lucro Líquido</th>
+                                      <th style="text-align: center">Taxas Corretora + B3</th>
+                                      <th style="text-align: center">Imposto Total</th>
+                                      <th style="text-align: center">Valor do DARF</th>
+                                      <th style="text-align: center">Data</th>
+                                      <th style="text-align: center"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let app of dataOut; let i = index">
+                                        <td style="text-align: center">
+                                            {{app.name.toLocaleUpperCase()}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            R$ {{app.totalProfitValue.toLocaleString('pt-BR')}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            R$ {{(app.corretoraFee+app.emolumentosFee+app.liquidacaoFee).toLocaleString('pt-BR')}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            R$ {{(app.irrffee+app.fixedTax).toLocaleString('pt-BR')}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            R$ {{app.fixedTax}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            {{app.date | date: 'dd/MM/yyyy'}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            <a href="javascript:void(0);" (click)="deleteTransaction(i)">Deletar</a>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                                    <tbody *ngIf="!dataOut">
+                                        <tr>
+                                            <td style="text-align: center">-</td>
+                                            <td style="text-align: center">-</td>
+                                            <td style="text-align: center">-</td>
+                                            <td style="text-align: center">-</td>
+                                            <td style="text-align: center">-</td>
+                                            <td style="text-align: center">-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </tab>
+
+
+                        <tab>
+                            <ng-template tabHeading> Subscrições e IPOs</ng-template>
+                            <h6 class="xs-mt-40 xs-mb-10"><strong></strong></h6>
+                            <div style="overflow-x:auto; font-size: small">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center">Ativo</th>
+                                        <th style="text-align: center">Qualtidade</th>
+                                        <th style="text-align: center">Total</th>
+                                        <th style="text-align: center">Corretora</th>
+                                        <th style="text-align: center">Data</th>
+                                        <th style="text-align: center"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let app of dataOutSubscricao; let i = index">
+                                        <td style="text-align: center">
+                                            {{app.name.toLocaleUpperCase()}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            {{app.quantityBought}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            R$ {{app.totalBought.toLocaleString('pt-BR')}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            {{app.corretora}}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            {{app.date | date: 'dd/MM/yyyy' }}
+                                        </td>
+                                        <td style="text-align: center" >
+                                            <a href="javascript:void(0);" (click)="deleteSubscricao(i)">Deletar</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody *ngIf="!dataOut">
+                                    <tr>
+                                        <td style="text-align: center">-</td>
+                                        <td style="text-align: center">-</td>
+                                        <td style="text-align: center">-</td>
+                                        <td style="text-align: center">-</td>
+                                        <td style="text-align: center">-</td>
+                                        <td style="text-align: center">-</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </tab>
+
+
+                    </tabset>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

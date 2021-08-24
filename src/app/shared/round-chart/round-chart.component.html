@@ -1,0 +1,11 @@
+<div align="center" style="display: block" *ngIf="doughnutChartData">
+    <canvas
+        baseChart
+        [data]="doughnutChartData"
+        [labels]="monthLabels"
+        [chartType]="doughnutChartType">
+    </canvas>
+</div>
+<div align="center" style="display: block" *ngIf="!doughnutChartData">
+    Sem operações
+</div>

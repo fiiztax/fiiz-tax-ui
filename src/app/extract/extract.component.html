@@ -1,0 +1,126 @@
+<script>
+  $( "button" ).click(function() {
+    $( "p" ).toggle();
+  });
+  document.getElementById("date").innerHTML = Date();
+</script>
+
+<div class="" id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row row-stat">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+
+          <div class="panel-heading panel-heading-divider">
+            Importação de extrato de subscrições e IPOs
+            <span class="panel-subtitle">Você pode importar o extrato da sua corretora para importação de suas subscrições de
+            ofertas públicas e de IPOs de FII e ações.</span>
+          </div>
+          <div class="panel-body">
+
+
+
+
+
+            <div>
+              <tabset>
+                <tab>
+                  <ng-template tabHeading> XP Investimentos</ng-template>
+                  <h6 class="xs-mt-40 xs-mb-10"><strong></strong></h6>
+
+                  <img src="../../assets/images/xp-investimentos-logo.jpg" alt="Jaime Dantas" style="width:20%">
+                  <p>
+                    <br/>
+                    Você precisa gerar um extrato do tipo padrão na XP e importa-lo no formumálio abaixo. Para isso, vá na sua
+                    conta XP e selecione <b>Saldo / Extrato</b> no menu <b>Minha Conta</b>. Selecione extrato padão (1), o período (2)
+                    e clique em imprimir extrato (3) como mostra a figura abaixo.
+                  </p>
+                  <button (click)="myFunctionXp()"><i class="fa fa-expand"></i> Mostrar Guia</button>
+
+                  <div [hidden]="!show_image_xp" >
+                    <img src="../../assets/images/extrato_xp.png" alt="Jaime Dantas" style="width:50%">
+                  </div>
+                  <div class="xs-mt-10 xs-mb-10  ">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <form class="form-horizontal">
+
+
+
+                          <div class="form-group">
+                            <div class="row">
+                              <label class="col-sm-3 control-label" for="form-control-23">Extrato de Conta (PDF)</label>
+                              <div class="col-sm-9">
+                                <div class="input-group">
+                                  <input id="form-control-23" class="form-control" type="text" placeholder="{{selecioneOsArquivos}}"
+                                  >
+                                  <span class="input-group-btn">
+                                         <label class="btn btn-primary file-upload-btn">
+                                         <input class="file-upload-input" type="file" #fileV name="files[]" multiple
+                                                (change)="onUploadSubscricao(fileV.files)" accept=".pdf, .PDF" style="cursor: pointer">
+                                         <i class="icon mdi mdi-upload"></i>
+                                         </label>
+                                         </span>
+                                </div>
+                                <p class="help-block">
+                                  <small>Clique no botão para fazer o upload de um PDF de até 1 MB</small>
+                                </p>
+                                <div>
+                                  <button class="btn2 btn-space btn-primary"
+                                          (click)="sendFiles()" type="button"><i class="icon icon-left mdi mdi-calculator"></i> Calcular</button>
+                                </div>
+                                <br>
+                                <alert type="success" role="alert" [hidden]="!alert_sucess_upload" *ngFor="let app of dataOutUpload">
+                                  <div>
+                                    <h2 style="font-weight: bold"><span>{{app.name}}</span></h2>
+                                  </div>
+                                  <div>
+                                    <h5><span>Qualtidade: {{app.quantityBought}}</span></h5>
+                                  </div>
+                                  <div>
+                                    <h5><span>Total: R$ {{app.totalBought.toLocaleString('pt-BR')}}</span></h5>
+                                  </div>
+                                  <div>
+                                    <span>Data: {{app.date | date: 'dd/MM/yyyy' }}</span>
+                                  </div>
+                                </alert>
+                                <alert type="danger" role="alert" [hidden]="!alert_fail_upload" >
+                                  <div>
+                                    <h6><span>{{message_error_automatic}}</span></h6>
+                                  </div>
+                                </alert>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </tab>
+
+
+                <tab>
+                  <ng-template tabHeading> Rico</ng-template>
+                  <h6 class="xs-mt-40 xs-mb-10"><strong></strong></h6>
+
+                  <img src="../../assets/images/rico.png" alt="Jaime Dantas" style="width:18%">
+
+                  <p>
+                    <br/>
+                    Em breve você também poderá importar o extrato da Rico.
+                  </p>
+
+                </tab>
+
+
+              </tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

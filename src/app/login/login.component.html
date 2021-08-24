@@ -1,0 +1,47 @@
+﻿<!-- main app container -->
+<body>
+<div id="login-window" class="jumbotron" style="padding-top: 20px">
+    <div class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <div style="display: block; margin-left: auto; margin-right: auto; width: 30%">
+                        <a href="https://fiiztax.com" style="cursor: pointer">
+                            <img src="../../assets/images/icon_transparent_medium_2.png"/>
+                        </a>
+                    </div>
+                    <h2 align="center">Login</h2>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label style="font-size: large" for="username">Usuário</label>
+                            <input style="font-size: large" type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">O usuário é obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size: large" for="password">Senha</label>
+                            <input style="font-size: large" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">A senha é obrigatória</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="loading" class="btn btn-primary">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Entrar
+                            </button>
+                            <alert></alert>
+                            <a>Ainda não tem uma conta? </a><a routerLink="/register" class="btn btn-link">Cadastrar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="https://fiiztax.com" target="_top">Copyright © 2020 - FIIZ TAX</a>
+    </p>
+</div>
+

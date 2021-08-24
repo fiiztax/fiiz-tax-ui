@@ -1,0 +1,44 @@
+
+
+/********** 3. HEADER STYLES **********/
+/**************************************/
+
+.headerwrapper {
+    background-color: #82abd9;
+    min-height: 60px;
+    width: 100%;
+    z-index: 1000;
+    &:after {
+        clear: both;
+        display: block;
+        content: '';
+    }
+    position: fixed;
+}
+.header-left {
+    float: left;
+}
+
+.header-right {
+    float: right;
+}
+.header-center {
+    align-content: initial;
+}
+
+a.btn.btn-social-icon.btn-github {
+    color: #1f1f1f;
+    border: 0px;
+    margin: 10px;
+}
+
+
+@media screen and (max-width: 766px) {
+    a.btn.btn-social-icon.btn-github {
+        color: #1f1f1f;
+        border: 0px;
+        margin: 0px;
+        font-size: x-small;
+        padding-top: 25px;
+    }
+}
