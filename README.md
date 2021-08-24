@@ -22,7 +22,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Run in production mode
 
-``ng serve $IP --disable-host-check```
+``
+ng serve $IP --disable-host-check
+``
 
 ## License
 This project is licensed under the
