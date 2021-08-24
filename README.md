@@ -1,6 +1,6 @@
 # UI of FIIZ TAZ 
 
-UI of FIIZ TAX
+Core system of FIIZ TAX.
 
 ![](img/ui.png)
 
